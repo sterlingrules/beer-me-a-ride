@@ -57,12 +57,6 @@ var qs = require('querystring'),
     	},
 	url = 'http://' + configKey + ':' + secretKey + '@launch.alertrocket.com/api/push',
 	auth = configKey + ":" + secretKey;
-	
-var oa = new OAuth(
-	"https://launch.alertrocket.com/api/push",
-	configKey,
-	secretKey
-);
 
 // --------------------------------------------------------------------------------------
 // DATABASE
@@ -132,25 +126,13 @@ app.get('/karl', function(req, res) {
 });
 
 app.get('/redeem-ride', function(req, res) {
-	// request.post({
-	// 	url: url,
-	// 	body: '{"alert":"I Need A Ride!", "url":"http://launch.alertrocket.com/demo"}'
-	// 	}, function (e, r, body) {
-	// 		var response = qs.parse(body);
-	// 		console.log(r);
-	// 		console.log(response);
-	// });
-	oa.post(
-		"https://launch.alertrocket.com/api/push",
-		configKey,
-	    secretKey,
-		{"alert":"A Notification Title", "url":"http://launch.alertrocket.com/demo"},
-		function(error, data) {
-			if (error) {
-				console.log(require('sys').inspect(error));
-			} else {
-				console.log(data);
-			}
+	request.post({
+		url: url,
+		body: '{"alert":"I Need A Ride!", "url":"http://launch.alertrocket.com/demo"}'
+		}, function (e, r, body) {
+			var response = qs.parse(body);
+			console.log(r);
+			console.log(response);
 	});
 });
 
