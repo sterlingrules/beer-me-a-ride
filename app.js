@@ -47,6 +47,8 @@ app.enable('jsonp callback');
 // PUSH NOTIFICATIONS
 // --------------------------------------------------------------------------------------
 
+var configKey = '09a3ca0d2c614eaaac4152e1b4a0f19d';
+var secretKey = '174b0585012d4b8aa88c62fa319c9575';
 var qs = require('querystring'),
 	oauth = {
 			config_key: configKey,
@@ -68,9 +70,6 @@ var mysql = require('mysql'),
 	client.database = 'beer_me_a_ride';
 	
 console.log('Connected...');
-
-var configKey = '09a3ca0d2c614eaaac4152e1b4a0f19d';
-var secretKey = '174b0585012d4b8aa88c62fa319c9575';
 
 
 // --------------------------------------------------------------------------------------
@@ -147,14 +146,4 @@ app.get('/redeem-beer', function(req, res) {
 			// console.log(r);
 			console.log(response);
 	});
-});
-
-request.post({
-	url: url,
-	method: 'POST',
-	body: '{"alert":"I Need A Ride!", "url":"http://launch.alertrocket.com/demo"}'
-	}, function (e, r, body) {
-		var response = qs.parse(body);
-		// console.log(r);
-		console.log(response);
 });
