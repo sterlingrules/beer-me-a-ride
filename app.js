@@ -54,7 +54,8 @@ var qs = require('querystring'),
 			config_key: configKey,
 			api_secret: secretKey
     	},
-	url = 'http://' + configKey + ':' + secretKey + '@launch.alertrocket.com/api/push';
+	url = 'https://launch.alertrocket.com/api/push',
+	auth = configKey + ":" + secretKey;
 
 
 // --------------------------------------------------------------------------------------
@@ -128,10 +129,13 @@ app.get('/redeem-ride', function(req, res) {
 	request.post({
 		url: url,
 		method: 'POST',
+		headers: {
+			"Authorization" : auth
+		},
 		body: '{"alert":"I Need A Ride!", "url":"http://launch.alertrocket.com/demo"}'
 		}, function (e, r, body) {
 			var response = qs.parse(body);
-			// console.log(r);
+			console.log(r);
 			console.log(response);
 	});
 });
