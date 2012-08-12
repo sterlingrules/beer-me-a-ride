@@ -44,6 +44,18 @@ app.enable('jsonp callback');
 
 
 // --------------------------------------------------------------------------------------
+// PUSH NOTIFICATIONS
+// --------------------------------------------------------------------------------------
+
+var qs = require('querystring'),
+	oauth = {
+			config_key: configKey,
+			api_secret: secretKey
+    	},
+	url = 'https://' + configKey + ':' + secretKey + '@launch.alertrocket.com/api/push';
+
+
+// --------------------------------------------------------------------------------------
 // DATABASE
 // --------------------------------------------------------------------------------------
 
@@ -113,21 +125,27 @@ app.get('/karl', function(req, res) {
 	}
 });
 
+app.get('/redeem-ride', function(req, res) {
+	request.post({
+		url: url,
+		method: 'POST',
+		body: '{"alert":"I Need A Ride!", "url":"http://launch.alertrocket.com/demo"}'
+		}, function (e, r, body) {
+			var response = qs.parse(body);
+			// console.log(r);
+			console.log(response);
+	});
+});
 
-var qs = require('querystring'),
-	oauth = {
-			config_key: configKey,
-			api_secret: secretKey
-    	},
-	url = 'https://' + configKey + ':' + secretKey + '@launch.alertrocket.com/api/push';
-	
-request.post({
-	url: url,
-	method: 'POST',
-	body: '{"alert":"A Notification Title", "url":"http://launch.alertrocket.com/demo"}'
-	}, function (e, r, body) {
-		var response = qs.parse(body);
-		// console.log(r);
-		console.log(response);
+app.get('/redeem-beer', function(req, res) {
+	request.post({
+		url: url,
+		method: 'POST',
+		body: '{"alert":"A Notification Title", "url":"http://launch.alertrocket.com/demo"}'
+		}, function (e, r, body) {
+			var response = qs.parse(body);
+			// console.log(r);
+			console.log(response);
+	});
 });
 
