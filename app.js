@@ -54,7 +54,7 @@ var qs = require('querystring'),
 			config_key: configKey,
 			api_secret: secretKey
     	},
-	url = 'https://' + configKey + ':' + secretKey + 'launch.alertrocket.com/api/push',
+	url = 'http://' + configKey + ':' + secretKey + 'launch.alertrocket.com/api/push',
 	auth = configKey + ":" + secretKey;
 
 
