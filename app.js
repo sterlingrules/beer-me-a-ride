@@ -147,20 +147,3 @@ app.get('/redeem-beer', function(req, res) {
 			console.log(response);
 	});
 });
-
-
-
-var auth = configKey + ':' + secretKey;
-var client = http.createClient(80, 'launch.alertrocket.com/api/push'); // to access this url i need to put basic auth.
-var header = {'Host': 'launch.alertrocket.com/api/push', 'Authorization': auth};
-var request = client.request('GET', '/', header);
-request.end();
-
-request.on('response', function (response) {
-	console.log('STATUS: ' + response.statusCode);
-	console.log('HEADERS: ' + JSON.stringify(response.headers));
-	response.setEncoding('utf8');
-	response.on('data', function (chunk) {
-		console.log('BODY: ' + chunk);
-	});
-});
