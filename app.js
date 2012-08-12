@@ -34,7 +34,7 @@ var app = express.createServer(
 				express.bodyParser(),
 				express.session({secret: 'FlurbleGurgleBurgle',
 				                store: new express.session.MemoryStore({ reapInterval: -1 }) }));
-app.listen(1337);
+app.listen(8989);
 
 app.use(express.compiler({ src: __dirname + '/views', enable: ['less'] }));
 app.use('/css', express.static(__dirname + '/views'));
