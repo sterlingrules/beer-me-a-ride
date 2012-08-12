@@ -1,0 +1,14 @@
+body(onload="storeCheck();")
+	
+	section#container
+		section#karl_header
+			h1 They're Thirsty
+
+		ul#beer_list
+			- var i = 0
+			for name in data
+				li #{data[i].name} #{data[i].beers} Beers
+				- i++
+
+		nav
+			a.btn.blue(href="javascript:void(0);", ontouchstart="askEveryone();") I Need A Ride!

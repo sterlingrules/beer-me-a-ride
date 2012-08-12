@@ -1,0 +1,12 @@
+body(onload="storeCheck();")
+	
+	section#container
+		section#karl_header
+			h1 Beer Me A Ride
+
+		form#login(method="post", action="/login", enctype="application/x-www-form-urlencoded")
+			input.username(type="email", name="email", placeholder="Jogonaut Email")
+			br
+			input.password(type="password", name="password", placeholder="Password")
+			br
+			input.btn.blue(type="submit", value="Enter")

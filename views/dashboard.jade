@@ -1,0 +1,11 @@
+body(onload="storeCheck();")
+	
+	section#container
+		section#karl_header
+			h1 I Owe You...
+
+		section#beer_display
+			h1.display #{beer_count}
+
+		nav
+			a.btn.blue(href="javascript:void(0);", ontouchstart="askKarl();") Redeem

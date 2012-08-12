@@ -1,0 +1,26 @@
+!!! 5
+html(lang="en", manifest="/cache.manifest")
+	head
+		meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+		meta(http-equiv='Content-Language', content='en-us')
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0")
+		meta(name="apple-mobile-web-app-status-bar-style", content="black")
+		meta(name="apple-mobile-web-app-capable", content="yes")
+		link(rel="apple-touch-icon-precomposed", href="img/stout-app-icon-hd.png")
+		link(rel="apple-touch-startup-image", href="img/app-startup.png")
+		link(rel="apple-touch-startup-image", sizes="640x920", href="img/app-startup.hd.png")
+		title= title
+		link(rel="stylesheet", type="text/css", href="css/add2home.css")
+		link(rel="stylesheet", type="text/css", href="css/style.css")
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js')
+		script(src='http://static.ak.fbcdn.net/connect/en_US/core.js')
+		script(type="text/javascript")
+			var addToHomeConfig = {
+				touchIcon: true
+			};
+		script(src="js/add2home.js")
+		script(src="js/global.js")
+		script(type="text/javascript")
+			document.write(unescape("%3Cscript src='https://launch.alertrocket.com/widgets/BrowserDialog?appKey=09a3ca0d2c614eaaac4152e1b4a0f19d' type='text/javascript'%3E%3C/script%3E"));
+
+	!= body
