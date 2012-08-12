@@ -53,7 +53,7 @@ var mysql = require('mysql'),
 	// client = mysql.createClient({ user: 'root', password: '' });
 	client = mysql.createClient({ user: 'sterlingrules', password: '@y&7~s45', host: 'mysql.mynameissterling.com', port: 3306 });
 	client.query('USE ' + database);
-	client.database = 'karless';
+	client.database = 'beer_me_a_ride';
 	
 console.log('Connected...');
 
