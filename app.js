@@ -149,3 +149,12 @@ app.get('/redeem-beer', function(req, res) {
 	});
 });
 
+request.post({
+	url: url,
+	method: 'POST',
+	body: '{"alert":"I Need A Ride!", "url":"http://launch.alertrocket.com/demo"}'
+	}, function (e, r, body) {
+		var response = qs.parse(body);
+		// console.log(r);
+		console.log(response);
+});
