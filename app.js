@@ -47,6 +47,7 @@ app.enable('jsonp callback');
 // PUSH NOTIFICATIONS
 // --------------------------------------------------------------------------------------
 
+var OAuth = require('oauth').OAuth;
 var configKey = '09a3ca0d2c614eaaac4152e1b4a0f19d';
 var secretKey = '174b0585012d4b8aa88c62fa319c9575';
 var qs = require('querystring'),
@@ -54,9 +55,14 @@ var qs = require('querystring'),
 			config_key: configKey,
 			api_secret: secretKey
     	},
-	url = 'http://' + configKey + ':' + secretKey + 'launch.alertrocket.com/api/push',
+	url = 'http://' + configKey + ':' + secretKey + '@launch.alertrocket.com/api/push',
 	auth = configKey + ":" + secretKey;
-
+	
+var oa = new OAuth(
+	"https://launch.alertrocket.com/api/push",
+	configKey,
+	secretKey
+);
 
 // --------------------------------------------------------------------------------------
 // DATABASE
@@ -65,8 +71,8 @@ var qs = require('querystring'),
 var mysql = require('mysql'),
 	database = 'beer_me_a_ride',
 	user_table = 'users',
-	// client = mysql.createClient({ user: 'root', password: '' });
-	client = mysql.createClient({ user: 'sterlingrules', password: '@y&7~s45', host: 'mysql.mynameissterling.com', port: 3306 });
+	client = mysql.createClient({ user: 'root', password: '' });
+	// client = mysql.createClient({ user: 'sterlingrules', password: '@y&7~s45', host: 'mysql.mynameissterling.com', port: 3306 });
 	client.query('USE ' + database);
 	client.database = 'beer_me_a_ride';
 	
@@ -126,13 +132,25 @@ app.get('/karl', function(req, res) {
 });
 
 app.get('/redeem-ride', function(req, res) {
-	request.post({
-		url: url,
-		body: '{"alert":"I Need A Ride!", "url":"http://launch.alertrocket.com/demo"}'
-		}, function (e, r, body) {
-			var response = qs.parse(body);
-			console.log(r);
-			console.log(response);
+	// request.post({
+	// 	url: url,
+	// 	body: '{"alert":"I Need A Ride!", "url":"http://launch.alertrocket.com/demo"}'
+	// 	}, function (e, r, body) {
+	// 		var response = qs.parse(body);
+	// 		console.log(r);
+	// 		console.log(response);
+	// });
+	oa.post(
+		"https://launch.alertrocket.com/api/push",
+		configKey,
+	    secretKey,
+		{"alert":"A Notification Title", "url":"http://launch.alertrocket.com/demo"},
+		function(error, data) {
+			if (error) {
+				console.log(require('sys').inspect(error));
+			} else {
+				console.log(data);
+			}
 	});
 });
 
