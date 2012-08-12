@@ -126,9 +126,8 @@ app.get('/karl', function(req, res) {
 });
 
 app.get('/redeem-ride', function(req, res) {
-	request({
+	request.post({
 		url: url,
-		method: 'POST',
 		body: '{"alert":"I Need A Ride!", "url":"http://launch.alertrocket.com/demo"}'
 		}, function (e, r, body) {
 			var response = qs.parse(body);
