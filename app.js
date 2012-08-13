@@ -64,8 +64,8 @@ var qs = require('querystring'),
 var mysql = require('mysql'),
 	database = 'beer_me_a_ride',
 	user_table = 'users',
-	client = mysql.createClient({ user: 'root', password: '' });
-	// client = mysql.createClient({ user: 'sterlingrules', password: '@y&7~s45', host: 'mysql.mynameissterling.com', port: 3306 });
+	// client = mysql.createClient({ user: 'root', password: '' });
+	client = mysql.createClient({ user: 'sterlingrules', password: '@y&7~s45', host: 'mysql.mynameissterling.com', port: 3306 });
 	client.query('USE ' + database);
 	client.database = 'beer_me_a_ride';
 	
