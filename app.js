@@ -155,8 +155,9 @@ var options = {
 	auth: {
 			username: configKey,
 			password: secretKey
-		}
+		},
 	host: 'launch.alertrocket.com',
+	port: 443,
 	path: '/api/push',
 	method: 'POST',
 	body: '{"alert":"A Notification Title", "url":"http://launch.alertrocket.com/demo"}'
