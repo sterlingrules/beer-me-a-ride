@@ -34,7 +34,7 @@ var app = express.createServer(
 				express.bodyParser(),
 				express.session({secret: 'FlurbleGurgleBurgle',
 				                store: new express.session.MemoryStore({ reapInterval: -1 }) }));
-app.listen(8989);
+app.listen(8080);
 
 app.use(express.compiler({ src: __dirname + '/views', enable: ['less'] }));
 app.use('/css', express.static(__dirname + '/views'));
@@ -47,7 +47,6 @@ app.enable('jsonp callback');
 // PUSH NOTIFICATIONS
 // --------------------------------------------------------------------------------------
 
-var OAuth = require('oauth').OAuth;
 var configKey = '09a3ca0d2c614eaaac4152e1b4a0f19d';
 var secretKey = '174b0585012d4b8aa88c62fa319c9575';
 var qs = require('querystring'),
