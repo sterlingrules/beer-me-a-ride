@@ -5,7 +5,8 @@ var express = require('express');
 var url = require('url');
 var fs = require('fs');
 var http = require('http');
-var request = require('request');
+var https = require('https');
+// var request = require('request');
 var static = require('node-static');
 
 
@@ -150,7 +151,7 @@ app.get('/redeem-beer', function(req, res) {
 
 
 
-var https = require('https');
+
 
 var options = {
 	host: 'launch.alertrocket.com',
