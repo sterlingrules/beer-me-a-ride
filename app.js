@@ -127,9 +127,10 @@ app.get('/karl', function(req, res) {
 
 app.get('/redeem-ride', function(req, res) {
 	request.post({
-		url: url,
-		body: '{"alert":"I Need A Ride!", "url":"http://launch.alertrocket.com/demo"}'
-		}, function (e, r, body) {
+				url: url,
+				body: '{"alert":"I Need A Ride!", "url":"http://launch.alertrocket.com/demo"}'
+			},
+		function (e, r, body) {
 			var response = qs.parse(body);
 			console.log(r);
 			console.log(response);
@@ -146,4 +147,32 @@ app.get('/redeem-beer', function(req, res) {
 			// console.log(r);
 			console.log(response);
 	});
+});
+
+
+
+var https = require('https');
+
+var options = {
+	host: 'launch.alertrocket.com',
+	port: 443,
+	path: '/api/push',
+	method: 'POST',
+	auth: configKey + ":" + secretKey,
+	headers: 'Content-Type: application/json',
+	body: '{"alert":"A Notification Title", "url":"http://launch.alertrocket.com/demo"}'
+};
+
+var req = https.request(options, function(res) {
+	console.log("statusCode: ", res.statusCode);
+	console.log("headers: ", res.headers);
+
+	res.on('data', function(d) {
+		process.stdout.write(d);
+	});
+});
+req.end();
+
+req.on('error', function(e) {
+	console.error(e);
 });
