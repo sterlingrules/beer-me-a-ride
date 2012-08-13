@@ -152,10 +152,11 @@ app.get('/redeem-beer', function(req, res) {
 
 
 var options = {
-	auth: {
-			username: configKey,
-			password: secretKey
-		},
+	// auth: {
+	// 		username: configKey,
+	// 		password: secretKey
+	// 	},
+	auth: '09a3ca0d2c614eaaac4152e1b4a0f19d:174b0585012d4b8aa88c62fa319c9575',
 	host: 'launch.alertrocket.com',
 	port: 443,
 	path: '/api/push',
